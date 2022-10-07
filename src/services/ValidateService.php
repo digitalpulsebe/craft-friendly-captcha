@@ -1,6 +1,6 @@
 <?php
 /**
- * Friendly Captcha plugin for Craft CMS 3.x
+ * Friendly Captcha plugin for Craft CMS 4.x
  *
  * Integrate Friendly Captcha to fight spam in your Craft CMS forms
  *
@@ -33,7 +33,7 @@ class ValidateService extends Component
      * @return bool
      * @throws Exception
      */
-    public function validateRequest()
+    public function validateRequest(): bool
     {
         $solution = Craft::$app->getRequest()->getParam('frc-captcha-solution');
         $siteKey = $this->getSiteKey();
@@ -45,6 +45,9 @@ class ValidateService extends Component
      * FriendlyCaptcha::$plugin->validate->validateSolution($solution)
      *
      * @param string $solution
+     * @param string $siteKey
+     * @param string $apiKey
+     * @param string $endpoint
      * @return bool
      * @throws Exception
      */
