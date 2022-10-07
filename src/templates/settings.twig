@@ -1,0 +1,119 @@
+{% import "_includes/forms" as forms %}
+
+<h2>Friendly Captcha keys</h2>
+
+{{ forms.autosuggestField({
+    label: 'Site Key',
+    instructions: 'Your personal Friendly Captcha site key.',
+    id: 'siteKey',
+    name: 'siteKey',
+    value: settings.siteKey,
+    required: true,
+    suggestEnvVars: true,
+    errors: settings.getErrors('siteKey')
+})
+}}
+
+{{ forms.autosuggestField({
+    label: 'API Key',
+    instructions: 'Your personal Friendly Captcha API key.',
+    id: 'apiKey',
+    name: 'apiKey',
+    value: settings.apiKey,
+    required: true,
+    suggestEnvVars: true,
+    errors: settings.getErrors('apiKey')
+})
+}}
+
+<hr>
+
+<h2>Validate forms automatically:</h2>
+
+{{ forms.lightswitchField({
+    label: 'Validate contact forms',
+    instructions: 'Enable to validate all forms with Friendly Captcha when using the [Contact Form plugin](https://github.com/craftcms/contact-form).',
+    id: 'validateContactForm',
+    name: 'validateContactForm',
+    on: settings.validateContactForm
+})
+}}
+
+{{ forms.lightswitchField({
+    label: 'Validate users registration',
+    instructions: 'Enable to validate the user registration forms with Friendly Captcha.',
+    id: 'validateUsersRegistration',
+    name: 'validateUsersRegistration',
+    on: settings.validateUsersRegistration
+})
+}}
+
+<div class="pane">
+    <p>
+        <span class="warning" data-icon="alert"></span>
+        You still have to add this to your twig template inside the &lt;form&gt; tag:
+    </p>
+    <code>
+        {{ '{{' }} craft.friendlyCaptcha.renderWidget() {{ '}}' }}
+    </code>
+</div>
+
+<hr>
+
+{{ forms.checkboxField({
+    label: 'Dark mode theme',
+    id: 'darkMode',
+    name: 'darkMode',
+    checked: settings.darkMode,
+}) }}
+
+{{ forms.selectField({
+    label: 'Start on',
+    instructions: 'You can specify when the widget should start solving a puzzle.',
+    name: 'startEvent',
+    value: settings.startEvent ?? 'focus',
+    options: [{
+        value: 'focus',
+        label: 'Focus (the solver will start as soon as possible)',
+    }, {
+        value: 'auto',
+        label: 'Auto (as soon as the form the widget is in fires the focusin event the solver starts)',
+    }, {
+        value: 'none',
+        label: 'None (the solver only starts when the user presses the button)',
+    }],
+    errors: settings.getErrors('startEvent')
+}) }}
+<p class="notice has-icon">
+    <span class="icon" aria-hidden="true"></span>
+    <span>
+        Read
+        <a href="https://docs.friendlycaptcha.com/#/widget_api?id=data-start-attribute" target="_blank">
+            Friendly Captcha documentation about the start-trigger
+        </a>
+    </span>
+</p>
+
+{{ forms.selectField({
+    label: 'Endpoint',
+    instructions: 'Use the EU endpoint for the verification of submitted puzzles. (Friendly Captcha Advanced or Enterprise plan)',
+    name: 'endpoint',
+    value: settings.endpoint ?? 'global',
+    options: [{
+        value: 'global',
+        label: 'Global',
+    }, {
+        value: 'eu',
+        label: 'EU (Friendly Captcha Advanced or Enterprise plan)',
+    }],
+    errors: settings.getErrors('endpoint')
+}) }}
+<p class="notice has-icon">
+    <span class="icon" aria-hidden="true"></span>
+    <span>
+        Read
+        <a href="https://docs.friendlycaptcha.com/#/eu_endpoint" target="_blank">
+            Friendly Captcha documentation about Dedicated EU Endpoint
+        </a>
+    </span>
+</p>

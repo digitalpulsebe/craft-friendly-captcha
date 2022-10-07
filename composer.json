@@ -1,0 +1,52 @@
+{
+    "name": "digitalpulsebe/craft-friendly-captcha",
+    "description": "Integrate Friendly Captcha to fight spam in your Craft CMS forms",
+    "type": "craft-plugin",
+    "version": "1.0.0",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin",
+        "friendly captcha"
+    ],
+    "support": {
+        "docs": "https://github.com/https://github.com/digitalpulsebe/friendly-captcha/blob/master/README.md",
+        "issues": "https://github.com/https://github.com/digitalpulsebe/friendly-captcha/issues"
+    },
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Digital Pulse",
+            "homepage": "https://www.digitalpulse.be/"
+        }
+    ],
+    "require": {
+        "php": ">=7.4",
+        "craftcms/cms": "^3.0.0",
+        "ext-curl": "*"
+    },
+    "autoload": {
+        "psr-4": {
+          "digitalpulsebe\\friendlycaptcha\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "Friendly Captcha",
+        "handle": "friendly-captcha",
+        "developer": "Digital Pulse",
+        "developerUrl": "https://www.digitalpulse.be/",
+        "documentationUrl": "https://github.com/digitalpulsebe/friendly-captcha/blob/master/README.md",
+        "changelogUrl": "https://github.com/digitalpulsebe/friendly-captcha/master/CHANGELOG.md",
+        "components": {
+            "validate": "digitalpulsebe\\friendlycaptcha\\services\\ValidateService"
+        },
+        "class": "digitalpulsebe\\friendlycaptcha\\FriendlyCaptcha"
+    },
+    "config": {
+        "allow-plugins": {
+            "yiisoft/yii2-composer": true,
+            "craftcms/plugin-installer": true
+        }
+    }
+}
