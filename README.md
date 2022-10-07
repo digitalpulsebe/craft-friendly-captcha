@@ -1,4 +1,4 @@
-# Friendly Captcha plugin for Craft CMS 3.x
+# Friendly Captcha plugin for Craft CMS 3.x and Craft CMS 4.x
 
 Integrate Friendly Captcha to fight spam in your Craft CMS forms
 
@@ -6,7 +6,7 @@ Integrate Friendly Captcha to fight spam in your Craft CMS forms
 
 ## Requirements
 
-This plugin requires Craft CMS 3.0 or later.
+This plugin requires Craft CMS 3.0 or Craft CMS 4.0 or later.
 
 ## Installation
 
@@ -19,6 +19,10 @@ To install the plugin, follow these instructions.
 2. Then tell Composer to load the plugin:
 
        composer require digitalpulsebe/craft-friendly-captcha
+
+   when using Craft 3.x use plugin version 1:
+
+       composer require digitalpulsebe/craft-friendly-captcha:^1.0.0
 
 3. In the Control Panel, go to Settings → Plugins and click the “Install” button for Friendly Captcha. Or run:
 
@@ -51,7 +55,7 @@ You have to enable the forms you want to validate in the settings:
 
 When you want to validate the request in your custom controller run this:
 
-```
+```php
 use digitalpulsebe\friendlycaptcha\FriendlyCaptcha;
 
 // ...
@@ -59,6 +63,13 @@ use digitalpulsebe\friendlycaptcha\FriendlyCaptcha;
 if (!FriendlyCaptcha::$plugin->validate->validateRequest()) {
    // add error here
 }
+```
+
+To show error messages in your form, use the submission object (check implementation of the controller you use):
+
+```
+{{ craft.friendlyCaptcha.renderWidget() }}
+{{ message ? _self.errorList(message.getErrors('friendlyCaptcha')) }}
 ```
 
 ## Widget options

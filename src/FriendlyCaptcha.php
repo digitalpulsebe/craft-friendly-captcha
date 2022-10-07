@@ -1,6 +1,6 @@
 <?php
 /**
- * Friendly Captcha plugin for Craft CMS 3.x
+ * Friendly Captcha plugin for Craft CMS 4.x
  *
  * Integrate Friendly Captcha to fight spam in your Craft CMS forms
  *
@@ -10,6 +10,7 @@
 
 namespace digitalpulsebe\friendlycaptcha;
 
+use craft\base\Model;
 use craft\contactform\models\Submission;
 use digitalpulsebe\friendlycaptcha\services\ValidateService as ValidateService;
 use digitalpulsebe\friendlycaptcha\variables\FriendlyCaptchaVariable;
@@ -48,21 +49,14 @@ class FriendlyCaptcha extends Plugin
      *
      * @var string
      */
-    public $schemaVersion = '1.0.0';
+    public string $schemaVersion = '1.0.0';
 
     /**
      * Set to `true` if the plugin should have a settings view in the control panel.
      *
      * @var bool
      */
-    public $hasCpSettings = true;
-
-    /**
-     * Set to `true` if the plugin should have its own section (main nav item) in the control panel.
-     *
-     * @var bool
-     */
-    public $hasCpSection = false;
+    public bool $hasCpSettings = true;
 
     public function init()
     {
@@ -121,22 +115,17 @@ class FriendlyCaptcha extends Plugin
     // =========================================================================
 
     /**
-     * Creates and returns the model used to store the plugin’s settings.
-     *
-     * @return \craft\base\Model|null
+     * @inheritdoc
      */
-    protected function createSettingsModel()
+    protected function createSettingsModel(): Model
     {
         return new Settings();
     }
 
     /**
-     * Returns the rendered settings HTML, which will be inserted into the content
-     * block on the settings page.
-     *
-     * @return string The rendered settings HTML
+     * @inheritdoc
      */
-    protected function settingsHtml(): string
+    protected function settingsHtml(): ?string
     {
         return Craft::$app->view->renderTemplate(
             'friendly-captcha/settings',

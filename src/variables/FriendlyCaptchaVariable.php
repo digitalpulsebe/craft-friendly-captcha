@@ -1,6 +1,6 @@
 <?php
 /**
- * Friendly Captcha plugin for Craft CMS 3.x
+ * Friendly Captcha plugin for Craft CMS 4.x
  *
  * Integrate Friendly Captcha to fight spam in your Craft CMS forms
  *
