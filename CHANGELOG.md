@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ### Added
 - Craft 4 support
 
+## 1.0.1 - 2022-10-10
+### Added
+- correct docs urls in composer
+
 ## 1.0.0 - 2022-10-03
 ### Added
 - Initial release
