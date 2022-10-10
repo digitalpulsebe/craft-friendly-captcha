@@ -11,8 +11,8 @@
         "friendly captcha"
     ],
     "support": {
-        "docs": "https://github.com/https://github.com/digitalpulsebe/friendly-captcha/blob/master/README.md",
-        "issues": "https://github.com/https://github.com/digitalpulsebe/friendly-captcha/issues"
+        "docs": "https://github.com/digitalpulsebe/craft-friendly-captcha/blob/master/README.md",
+        "issues": "https://github.com/digitalpulsebe/craft-friendly-captcha/issues"
     },
     "license": "proprietary",
     "authors": [
@@ -36,8 +36,8 @@
         "handle": "friendly-captcha",
         "developer": "Digital Pulse",
         "developerUrl": "https://www.digitalpulse.be/",
-        "documentationUrl": "https://github.com/digitalpulsebe/friendly-captcha/blob/master/README.md",
-        "changelogUrl": "https://github.com/digitalpulsebe/friendly-captcha/master/CHANGELOG.md",
+        "documentationUrl": "https://github.com/digitalpulsebe/craft-friendly-captcha/blob/master/README.md",
+        "changelogUrl": "https://github.com/digitalpulsebe/craft-friendly-captcha/blob/master/CHANGELOG.md",
         "components": {
             "validate": "digitalpulsebe\\friendlycaptcha\\services\\ValidateService"
         },
