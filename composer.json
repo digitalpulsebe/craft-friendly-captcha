@@ -13,7 +13,7 @@
         "docs": "https://github.com/digitalpulsebe/craft-friendly-captcha/blob/master/README.md",
         "issues": "https://github.com/digitalpulsebe/craft-friendly-captcha/issues"
     },
-    "license": "proprietary",
+    "license": "MIT",
     "authors": [
         {
             "name": "Digital Pulse",
