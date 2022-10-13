@@ -72,6 +72,11 @@ To show error messages in your form, use the submission object (check implementa
 {{ message ? _self.errorList(message.getErrors('friendlyCaptcha')) }}
 ```
 
+## Using Friendly Captcha with Formie
+
+Use the [digitalpulse/craft-formie-friendly-captcha](https://github.com/digitalpulsebe/craft-formie-friendly-captcha)
+plugin with Formie.
+
 ## Widget options
 
 You can pass an array of attributes to the `renderWidget()`-function.
