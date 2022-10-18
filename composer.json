@@ -2,7 +2,6 @@
     "name": "digitalpulsebe/craft-friendly-captcha",
     "description": "Integrate Friendly Captcha to fight spam in your Craft CMS forms",
     "type": "craft-plugin",
-    "version": "1.0.0",
     "keywords": [
         "craft",
         "cms",
