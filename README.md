@@ -88,3 +88,6 @@ example:
 {{ craft.friendlyCaptcha.renderWidget({'data-lang': 'fr'}) }}
 ```
 
+## Attribution
+
+The Friendly Captcha widget and logo belong to Friendly Captcha
