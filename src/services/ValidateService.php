@@ -156,7 +156,7 @@ class ValidateService extends Component
         ];
 
         if ($settings->endpoint != 'global') {
-            $defaultAttributes['data-puzzle-endpoint'] = FriendlyCaptcha::$plugin->validate->getEndpointUrl($this->endpoint, 'puzzle');
+            $defaultAttributes['data-puzzle-endpoint'] = FriendlyCaptcha::$plugin->validate->getEndpointUrl($settings->endpoint, 'puzzle');
         }
 
         if ($settings->darkMode) {
