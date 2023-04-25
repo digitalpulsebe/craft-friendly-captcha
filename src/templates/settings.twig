@@ -105,8 +105,12 @@
     }, {
         value: 'eu',
         label: 'EU (Friendly Captcha Advanced or Enterprise plan)',
+    }, {
+        value: 'custom',
+        label: 'Custom (Self Hosted Captcha Server)',
     }],
-    errors: settings.getErrors('endpoint')
+    errors: settings.getErrors('endpoint'),
+    toggle: true
 }) }}
 <p class="notice has-icon">
     <span class="icon" aria-hidden="true"></span>
@@ -117,3 +121,20 @@
         </a>
     </span>
 </p>
+
+
+<div id="custom"{% if settings.endpoint != 'custom' %} class="hidden"{% endif %}>
+    <div id="endpoint-custom-fields">
+        {{ forms.autosuggestField({
+            label: "Custom endpoint",
+            instructions: "Use a custom endpoint for the Self Hosted Captcha Server",
+            id: 'customEndpoint',
+            name: 'customEndpoint',
+            value: settings.customEndpoint,
+            required: false,
+            suggestEnvVars: true,
+            errors: settings.getErrors('customEndpoint')
+        })
+        }}
+    </div>
+</div>

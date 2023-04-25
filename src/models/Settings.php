@@ -54,6 +54,12 @@ class Settings extends Model
     public string $endpoint = 'global';
 
     /**
+     * base url for custom servers
+     * @var string|null $customEndpoint
+     */
+    public ?string $customEndpoint = null;
+
+    /**
      * @var bool
      */
     public bool $darkMode = false;
@@ -74,6 +80,18 @@ class Settings extends Model
         return App::parseEnv($this->apiKey);
     }
 
+    /**
+     * @return ?string
+     */
+    public function getCustomEndpoint(): ?string
+    {
+        if ($this->customEndpoint) {
+            return App::parseEnv($this->customEndpoint);
+        }
+
+        return null;
+    }
+
     public function behaviors(): array
     {
         return [
@@ -91,7 +109,7 @@ class Settings extends Model
             ['apiKey', 'string'],
             ['darkMode', 'boolean'],
             ['startEvent', 'in', 'range' => ['auto', 'focus', 'none']],
-            ['endpoint', 'in', 'range' => ['global', 'eu']],
+            ['endpoint', 'in', 'range' => ['global', 'eu', 'custom']],
             [['siteKey', 'apiKey', 'startEvent', 'endpoint'], 'required'],
             ['validateContactForm', 'boolean'],
             ['validateUsersRegistration', 'boolean'],
