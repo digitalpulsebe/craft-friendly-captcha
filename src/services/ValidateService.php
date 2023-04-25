@@ -150,8 +150,8 @@ class ValidateService extends Component
     {
         $settings = FriendlyCaptcha::$plugin->getSettings();
 
-        Craft::$app->view->registerJsFile('https://unpkg.com/friendly-challenge@0.9.7/widget.module.min.js', ['async' => true, 'defer' => true]);
-        Craft::$app->view->registerJsFile('https://unpkg.com/friendly-challenge@0.9.7/widget.min.js', ['async' => true, 'defer' => true]);
+        Craft::$app->view->registerJsFile(Craft::$app->assetManager->getPublishedUrl('@digitalpulsebe/friendlycaptcha/assets/js/widget.module.min.js', true), ['async' => true, 'defer' => true]);
+        Craft::$app->view->registerJsFile(Craft::$app->assetManager->getPublishedUrl('@digitalpulsebe/friendlycaptcha/assets/js/widget.min.js', true), ['async' => true, 'defer' => true]);
 
         $defaultAttributes = [
             'class' => 'frc-captcha',
