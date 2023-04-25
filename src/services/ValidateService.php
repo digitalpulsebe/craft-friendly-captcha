@@ -125,6 +125,14 @@ class ValidateService extends Component
 
     public function getEndpointUrl(string $endpoint, string $service): string
     {
+        if ($endpoint == 'custom') {
+            $baseUrl = FriendlyCaptcha::$plugin->getSettings()->getCustomEndpoint();
+            if (substr($baseUrl, -1) !== '/') {
+                // append trailing slash if needed
+                $baseUrl = $baseUrl.'/';
+            }
+            return $baseUrl.$service;
+        }
         if (!isset($this->endpoints[$endpoint])) {
             throw new Exception('Unsupported Friendly Captcha endpoint');
         }
