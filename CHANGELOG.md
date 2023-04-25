@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 2.1.0 - 2023-04-25
+### Added
+- setting to add custom endpoint (self hosted lite)
+- offline js files: widget script version 0.9.11
+
 ## 2.0.5 - 2023-02-14
 ### Fix
 - fixes error when using EU endpoint: unknown property: digitalpulsebe\friendlycaptcha\services\ValidateService::endpoint
@@ -28,6 +33,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ## 2.0.0 - 2022-10-07
 ### Added
 - Craft 4 support
+
+## 1.1.0 - 2023-04-25
+### Added
+- setting to add custom endpoint (self hosted lite)
+- offline js files: widget script version 0.9.11
 
 ## 1.0.4 - 2023-02-14
 ### Fix
