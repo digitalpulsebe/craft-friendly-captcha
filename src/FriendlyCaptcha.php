@@ -42,7 +42,7 @@ class FriendlyCaptcha extends Plugin
      *
      * @var FriendlyCaptcha
      */
-    public static $plugin;
+    public static FriendlyCaptcha $plugin;
 
     /**
      * To execute your plugin’s migrations, you’ll need to increase its schema version.
@@ -58,57 +58,60 @@ class FriendlyCaptcha extends Plugin
      */
     public bool $hasCpSettings = true;
 
-    public function init()
+    public function init(): void
     {
         parent::init();
         self::$plugin = $this;
 
-        // Register our variables
-        Event::on(
-            CraftVariable::class,
-            CraftVariable::EVENT_INIT,
-            function (Event $event) {
-                /** @var CraftVariable $variable */
-                $variable = $event->sender;
-                $variable->set('friendlyCaptcha', FriendlyCaptchaVariable::class);
-            }
-        );
-
-        // Handle form submissions of the craftcms/contact-form plugin
-        if (class_exists(Submission::class) && $this->settings->validateContactForm) {
-            Event::on(Submission::class, Submission::EVENT_BEFORE_VALIDATE, function (ModelEvent $event) {
-                $submission = $event->sender;
-                if (!$this->validate->validateRequest()) {
-                    $submission->addError('friendlyCaptcha', Craft::t('friendly-captcha', 'Please verify you are human.'));
-                    $event->isValid = false;
+        // Defer most setup tasks until Craft is fully initialized
+        Craft::$app->onInit(function() {
+            // Register our variables
+            Event::on(
+                CraftVariable::class,
+                CraftVariable::EVENT_INIT,
+                function (Event $event) {
+                    /** @var CraftVariable $variable */
+                    $variable = $event->sender;
+                    $variable->set('friendlyCaptcha', FriendlyCaptchaVariable::class);
                 }
-            });
-        }
+            );
 
-        // Handle user registration forms
-        if ($this->settings->validateUsersRegistration && Craft::$app->getRequest()->getIsSiteRequest()) {
-            Event::on(User::class, User::EVENT_BEFORE_VALIDATE, function (ModelEvent $event) {
-                /** @var User $user */
-                $user = $event->sender;
-
-                // Only new users
-                if ($user->id === null && $user->uid === null && $user->contentId === null) {
+            // Handle form submissions of the craftcms/contact-form plugin
+            if (class_exists(Submission::class) && $this->settings->validateContactForm) {
+                Event::on(Submission::class, Submission::EVENT_BEFORE_VALIDATE, function (ModelEvent $event) {
+                    $submission = $event->sender;
                     if (!$this->validate->validateRequest()) {
-                        $user->addError('friendlyCaptcha', Craft::t('friendly-captcha', 'Please verify you are human.'));
+                        $submission->addError('friendlyCaptcha', Craft::t('friendly-captcha', 'Please verify you are human.'));
                         $event->isValid = false;
                     }
-                }
-            });
-        }
+                });
+            }
 
-        Craft::info(
-            Craft::t(
-                'friendly-captcha',
-                '{name} plugin loaded',
-                ['name' => $this->name]
-            ),
-            __METHOD__
-        );
+            // Handle user registration forms
+            if ($this->settings->validateUsersRegistration && Craft::$app->getRequest()->getIsSiteRequest()) {
+                Event::on(User::class, User::EVENT_BEFORE_VALIDATE, function (ModelEvent $event) {
+                    /** @var User $user */
+                    $user = $event->sender;
+
+                    // Only new users
+                    if ($user->id === null && $user->uid === null && $user->contentId === null) {
+                        if (!$this->validate->validateRequest()) {
+                            $user->addError('friendlyCaptcha', Craft::t('friendly-captcha', 'Please verify you are human.'));
+                            $event->isValid = false;
+                        }
+                    }
+                });
+            }
+
+            Craft::info(
+                Craft::t(
+                    'friendly-captcha',
+                    '{name} plugin loaded',
+                    ['name' => $this->name]
+                ),
+                __METHOD__
+            );
+        });
     }
 
     // Protected Methods
