@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ### Added
 - Craft 5 support
 
+## 2.1.2 - 2023-12-29
+### Updated
+- friendly captcha widget script
+
 ## 2.1.1 - 2023-08-10
 ### Updated
 - new logo
