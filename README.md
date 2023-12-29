@@ -1,4 +1,4 @@
-# Friendly Captcha plugin for Craft CMS 3.x and Craft CMS 4.x
+# Friendly Captcha plugin for Craft CMS 3.x, 4.x and 5.x
 
 Integrate Friendly Captcha to fight spam in your Craft CMS forms
 
@@ -6,7 +6,7 @@ Integrate Friendly Captcha to fight spam in your Craft CMS forms
 
 ## Requirements
 
-This plugin requires Craft CMS 3.0 or Craft CMS 4.0 or later.
+This plugin requires Craft CMS 3, 4 or 5
 
 ## Installation
 
@@ -69,7 +69,7 @@ To show error messages in your form, use the submission object (check implementa
 
 ```
 {{ craft.friendlyCaptcha.renderWidget() }}
-{{ message ? _self.errorList(message.getErrors('friendlyCaptcha')) }}
+{{ submission ? _self.errorList(submission.getErrors('friendlyCaptcha')) }}
 ```
 
 ## Using Friendly Captcha with Formie

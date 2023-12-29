@@ -127,7 +127,7 @@ class ValidateService extends Component
     {
         if ($endpoint == 'custom') {
             $baseUrl = FriendlyCaptcha::$plugin->getSettings()->getCustomEndpoint();
-            if (substr($baseUrl, -1) !== '/') {
+            if (!str_ends_with($baseUrl, '/')) {
                 // append trailing slash if needed
                 $baseUrl = $baseUrl.'/';
             }
@@ -153,8 +153,8 @@ class ValidateService extends Component
     {
         $settings = FriendlyCaptcha::$plugin->getSettings();
 
-        Craft::$app->view->registerJsFile(Craft::$app->assetManager->getPublishedUrl('@digitalpulsebe/friendlycaptcha/assets/js/widget.module.min.js', true), ['async' => true, 'defer' => true]);
-        Craft::$app->view->registerJsFile(Craft::$app->assetManager->getPublishedUrl('@digitalpulsebe/friendlycaptcha/assets/js/widget.min.js', true), ['async' => true, 'defer' => true]);
+        Craft::$app->view->registerJsFile(Craft::$app->assetManager->getPublishedUrl('@digitalpulsebe/friendlycaptcha/assets/js/friendlycaptcha.min.js', true), ['async' => true, 'defer' => true, 'nomodule' => true]);
+        Craft::$app->view->registerJsFile(Craft::$app->assetManager->getPublishedUrl('@digitalpulsebe/friendlycaptcha/assets/js/friendlycaptcha.module.min.js', true), ['async' => true, 'defer' => true, 'type' => 'module']);
 
         $defaultAttributes = [
             'class' => 'frc-captcha',
