@@ -8,11 +8,11 @@ class AssetBundle extends BaseAssetBundle
 {
     public function init(): void
     {
-        $this->sourcePath = '@digitalpulsebe/friendlycaptcha/assets';
+        $this->sourcePath = '@digitalpulsebe/friendlycaptcha/assets/js';
 
         $this->js = [
-            'js/friendlycaptcha.min.js',
-            'js/friendlycaptcha.module.min.js',
+            'friendlycaptcha.min.js',
+            'friendlycaptcha.module.min.js',
         ];
 
         parent::init();
